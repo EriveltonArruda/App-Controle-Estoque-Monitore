@@ -16,15 +16,18 @@ Passo a passo de como rodar o projeto
 
 4º Siga as instruções que aparecem no terminal para abrir o projeto no emulador do Android Studio ou utilize o expo go para escanear o qrcode e abrir no seu celular.
 
-Imagens do Projeto:
-Home Screen
-<img src="assets/Readme/Tela Inicial.png" />
+Imagens do Projeto: <br/>
+Home Screen <br/>
+<img src="assets/Readme/Tela Inicial.png" width="50px" height="50px"/>
+ <br/>
 
-Lista de inventário
+Lista de inventário  <br/>
 <img src="assets/Readme/Lista de inventário.png" />
+ <br/>
 
-Tela de edição
+Tela de edição  <br/>
 <img src="assets/Readme/Tela de edição.png" />
+ <br/>
 
-Resultado da Edição
+Resultado da Edição  <br/>
 <img src="assets/Readme/Resultado da edição.png" />
