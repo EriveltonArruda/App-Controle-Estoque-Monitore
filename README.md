@@ -11,7 +11,7 @@ Passo a passo de como rodar o projeto
 2º pelo terminal, entre na pasta do projeto e rode o comando npm install para instalar as dependências do Node
 ```npm install```
 
-3º ainda no terminal, rode o comando abaixo para instalar as dependências do expo e iniciar o projeto
+3º ainda no terminal, rode o comando abaixo para instalar as dependências do expo e iniciar o projeto  <br/>
 ```npx expo start```
 
 4º Siga as instruções que aparecem no terminal para abrir o projeto no emulador do Android Studio ou utilize o expo go para escanear o qrcode e abrir no seu celular.
