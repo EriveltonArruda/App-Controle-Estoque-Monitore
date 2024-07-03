@@ -18,7 +18,7 @@ Passo a passo de como rodar o projeto
 
 Imagens do Projeto: <br/>
 Home Screen <br/>
-<img src="assets/Readme/Tela Inicial.png" width="50px" height="50px"/>
+<img src="assets/Readme/Tela Inicial.png"/>
  <br/>
 
 Lista de inventário  <br/>
