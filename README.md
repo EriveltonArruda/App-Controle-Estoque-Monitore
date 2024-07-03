@@ -3,7 +3,7 @@ Esse é um projeto de extensão para a conclusão do curso de Análise e Desenvo
 
 ## Requisitos para rodar o projeto
 Tenha instalado em seu sistema o emulador Android Studio com um emulador de celular ativo (Recomendo o pixel 2)
-Caso não tenha o Android Studio instalado, pode rodar diretamente pelo celular utilizando o Expo Go (disponível na play store)
+Caso não tenha o Android Studio instalado, pode rodar diretamente pelo celular utilizando o Expo Go (disponível na play store) <br/>
 Tenha o Node instalado na versão >=17
 
 
