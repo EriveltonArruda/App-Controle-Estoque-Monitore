@@ -1,13 +1,13 @@
 # App-Controle-Estoque-Monitore
 Esse é um projeto de extensão para a conclusão do curso de Análise e Desenvolvimento de Sistemas da Estácio.
 
-##Requisitos para rodar o projeto
+## Requisitos para rodar o projeto
 Tenha instalado em seu sistema o emulador Android Studio com um emulador de celular ativo (Recomendo o pixel 2)
 Caso não tenha o Android Studio instalado, pode rodar diretamente pelo celular utilizando o Expo Go (disponível na play store)
 Tenha o Node instalado na versão >=17
 
 
-###Passo a passo de como rodar o projeto
+### Passo a passo de como rodar o projeto
 
 1º clone o repositório na sua máquina
 
