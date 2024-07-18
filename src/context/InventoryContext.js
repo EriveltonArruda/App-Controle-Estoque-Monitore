@@ -1,27 +1,73 @@
-import React, { createContext, useState } from "react";
+// inventoryContext.js
+
+import React, { createContext, useState, useContext, useEffect } from "react";
+import {
+  getDBConnection,
+  createTables,
+  getItems,
+  saveItem,
+  deleteItem as deleteItemFromDB,
+} from "../../src/database/Database"; // Verifique se os nomes das funções estão corretos aqui
 
 const InventoryContext = createContext();
+
+export const useInventoryContext = () => useContext(InventoryContext);
 
 export const InventoryProvider = ({ children }) => {
   const [items, setItems] = useState([]);
 
-  const addItem = (item) => {
-    setItems([...items, item]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const db = await getDBConnection();
+        await createTables(db);
+        const storedItems = await getItems(db);
+        setItems(storedItems);
+      } catch (error) {
+        console.error("Failed to load data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const addItem = async (item) => {
+    try {
+      const db = await getDBConnection();
+      await saveItem(db, item.name, item.quantity);
+      await loadData(); // Carrega os itens novamente após adicionar um novo item
+    } catch (error) {
+      console.error("Failed to add item:", error);
+    }
   };
 
-  const updateItem = (updatedItem) => {
-    setItems(
-      items.map((item) => (item.id === updatedItem.id ? updatedItem : item))
-    );
+  const deleteItem = async (id) => {
+    try {
+      const db = await getDBConnection();
+      await deleteItemFromDB(db, id);
+      await loadData(); // Carrega os itens novamente após excluir um item
+    } catch (error) {
+      console.error("Failed to delete item:", error);
+    }
   };
 
-  const deleteItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
+  const loadData = async () => {
+    try {
+      const db = await getDBConnection();
+      const storedItems = await getItems(db);
+      setItems(storedItems);
+    } catch (error) {
+      console.error("Failed to load data:", error);
+    }
   };
 
   return (
     <InventoryContext.Provider
-      value={{ items, addItem, updateItem, deleteItem }}
+      value={{
+        items,
+        addItem,
+        deleteItem,
+      }}
     >
       {children}
     </InventoryContext.Provider>

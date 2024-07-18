@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, Button, Alert, StyleSheet } from "react-native";
 import InventoryContext from "../context/InventoryContext";
 
 const AddItemForm = () => {
@@ -7,14 +7,26 @@ const AddItemForm = () => {
   const [quantity, setQuantity] = useState("");
   const { addItem } = useContext(InventoryContext);
 
-  const handleAddItem = () => {
-    addItem({
-      id: Date.now(),
-      name,
-      quantity: parseInt(quantity, 10),
-    });
-    setName("");
-    setQuantity("");
+  const handleSubmit = async () => {
+    try {
+      if (!name || !quantity) {
+        throw new Error("Nome e quantidade são obrigatórios.");
+      }
+
+      const parsedQuantity = parseInt(quantity, 10);
+      if (isNaN(parsedQuantity)) {
+        throw new Error("Quantidade deve ser um número.");
+      }
+
+      console.log("Adding item:", { name, quantity: parsedQuantity });
+      await addItem({ name, quantity: parsedQuantity });
+
+      setName("");
+      setQuantity("");
+    } catch (error) {
+      Alert.alert("Erro", error.message);
+      console.error("Failed to add item:", error);
+    }
   };
 
   return (
@@ -22,33 +34,33 @@ const AddItemForm = () => {
       <TextInput
         style={styles.input}
         placeholder="Nome do Item"
-        placeholderTextColor="white"
+        placeholderTextColor="#fff"
         value={name}
         onChangeText={setName}
       />
       <TextInput
         style={styles.input}
         placeholder="Quantidade"
-        placeholderTextColor="white"
+        placeholderTextColor="#fff"
+        keyboardType="numeric"
         value={quantity}
         onChangeText={setQuantity}
-        keyboardType="numeric"
       />
-      <Button title="Adicionar Item" onPress={handleAddItem} />
+      <Button title="Adicionar Item" onPress={handleSubmit} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    margin: 20,
   },
   input: {
-    height: 40,
-    borderColor: "gray",
+    marginBottom: 10,
+    padding: 10,
     borderWidth: 1,
-    marginBottom: 16,
-    paddingHorizontal: 8,
+    borderColor: "#ccc",
+    borderRadius: 4,
     color: "#fff",
   },
 });
